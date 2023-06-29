@@ -8,6 +8,39 @@
     <title>Library</title>
 </head>
 <body>
+    <div class="form-container">
+        <div class="form-body">
+            <h2>Enter the book details</h2>
+            <form action="">
+                <label for="title">Title</label>
+                <br>
+                <input type="text" id="title" required>    
+                <br>
+                <label for="author">Author</label>
+                <br>
+                <input type="text" id="author" required>
+                <br>
+
+                <fieldset>
+                    <legend>Have you read it?</legend>
+                    
+                    <div style="display: flex; justify-content: space-evenly;">
+                        <div>
+                            <input type="radio" id="yes" name="read" value="yes" required>
+                            <label for="yes">Yes</label>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="no" name="read" value="no">
+                            <label for="no">No</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <input type="submit" value="Add book">
+            </form>
+        </div>
+    </div>
     <div class="container">
         <div class="bar">
             <h1>Library</h1>
@@ -15,7 +48,9 @@
         </div>
 
         <div class="contents">
-            
+            <div class="list">
+
+            </div>
         </div>
     </div>        
 </body>

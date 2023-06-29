@@ -10,3 +10,42 @@ body {
     display: grid;
     grid-template-rows: auto 1fr;
 }
+
+.form-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(90, 90, 90, 0.363);
+}
+
+.form-body {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 3rem 3rem;
+}
+
+form {
+    padding: 1rem 2rem;
+}
+
+input[type='text'] {
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 0.25rem black;
+    outline: none;
+    padding: 1rem;
+    font-size: 1.3rem;
+}
+
+input[type='text']:focus {
+    box-shadow: 0 0 0.5rem rgb(0, 37, 158);
+}
+
+label {
+    font-weight: bold;
+    padding: 0 0 0.5rem 0.5rem;
+}
