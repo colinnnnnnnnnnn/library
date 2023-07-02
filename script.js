@@ -3,6 +3,7 @@ let myLibrary = [];
 const form = document.getElementById('form');
 const formContainer = document.querySelector('.form-container');
 const button = document.getElementById('add');
+const content = document.querySelector('.content');
 
 button.addEventListener('click', () => {
     formContainer.style.display = 'flex';
@@ -23,11 +24,12 @@ function addBook(event) {
     let book = new Book(title, author, read);
     myLibrary.push(book);
 
-    console.log(myLibrary[0]);
 
     form.reset();
     formContainer.style.display = 'none';
     event.preventDefault();
 }
 
+function addToList(title, author, pages, read) {
 
+}
