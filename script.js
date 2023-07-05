@@ -2,10 +2,10 @@ let myLibrary = [];
 
 const form = document.getElementById('form');
 const formContainer = document.querySelector('.form-container');
-const button = document.getElementById('add');
+const add = document.getElementById('add');
 const content = document.querySelector('.content');
 
-button.addEventListener('click', () => {
+add.addEventListener('click', () => {
     formContainer.style.display = 'flex';
 });
 
@@ -27,14 +27,14 @@ function addBook(event) {
 
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
-    addToList(title, author, pages, read);
+    createRow(title, author, pages, read);
 
     form.reset();
     formContainer.style.display = 'none';
     event.preventDefault();
 }
 
-function addToList(title, author, pages, read) {
+function createRow(title, author, pages, read) {
     const row = document.createElement('div');
     row.classList.add('row');
     content.appendChild(row);
@@ -45,5 +45,25 @@ function addToList(title, author, pages, read) {
         elements[i].textContent = arguments[i];
 
         row.appendChild(elements[i]);
+    }
+
+    const remove = document.createElement('button');
+    remove.textContent = 'Remove';
+
+    remove.addEventListener('click', () => {
+        removeBook(row);
+    });
+
+    row.appendChild(remove);
+}
+
+function removeBook(row) {
+    let parent = row.parentNode;
+    let index = Array.prototype.indexOf.call(parent.children, row);
+    row.remove();
+    myLibrary.splice(index, 1);
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        console.log(myLibrary[i]);
     }
 }
