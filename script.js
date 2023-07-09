@@ -23,47 +23,69 @@ function addBook(event) {
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let read = document.getElementById('yes').checked;
-    read = (read === true) ? 'Yes' : 'No';
 
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
-    createRow(title, author, pages, read);
+    updateDisplay();
 
     form.reset();
     formContainer.style.display = 'none';
     event.preventDefault();
 }
 
-function createRow(title, author, pages, read) {
-    const row = document.createElement('div');
-    row.classList.add('row');
-    content.appendChild(row);
-    
-    let elements = [4];
-    for (let  i = 0; i < 4; i++) {
-        elements[i] = document.createElement('p');
-        elements[i].textContent = arguments[i];
-
-        row.appendChild(elements[i]);
-    }
-
-    const remove = document.createElement('button');
-    remove.textContent = 'Remove';
-
-    remove.addEventListener('click', () => {
-        removeBook(row);
-    });
-
-    row.appendChild(remove);
-}
-
-function removeBook(row) {
-    let parent = row.parentNode;
-    let index = Array.prototype.indexOf.call(parent.children, row);
-    row.remove();
-    myLibrary.splice(index, 1);
+function updateDisplay() {
+    content.innerHTML = '';
 
     for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i]);
+        const row = document.createElement('div');
+        row.classList.add('row');
+    
+        content.appendChild(row);
+
+        const title = document.createElement('p');
+        title.textContent = myLibrary[i].title;
+        row.appendChild(title);
+
+        const author = document.createElement('p');
+        author.textContent = myLibrary[i].author;
+        row.appendChild(author);
+
+        const pages = document.createElement('p');
+        pages.textContent = myLibrary[i].pages;
+        row.appendChild(pages);
+
+        const read = document.createElement('p');
+        read.textContent = (myLibrary[i].read === true) ? 'Yes' : 'No';
+        row.appendChild(read);
+
+        
+        let parent = row.parentNode;
+        let index = Array.prototype.indexOf.call(parent.children, row);
+    
+        const readButton = document.createElement('button');
+        readButton.textContent = 'Read';
+        const remove = document.createElement('button');
+        remove.textContent = 'Remove';
+    
+        readButton.addEventListener('click', () => {
+            changeRead(index);
+        });
+    
+        remove.addEventListener('click', () => {
+            removeBook(index);
+        });
+    
+        row.appendChild(remove);
+        row.appendChild(readButton);
     }
+}
+
+function removeBook(index) {
+    myLibrary.splice(index, 1);
+    updateDisplay();
+}
+
+function changeRead(index) {
+    myLibrary[index].read = !myLibrary[index].read;
+    updateDisplay();
 }
