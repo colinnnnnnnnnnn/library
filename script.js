@@ -89,3 +89,5 @@ function changeRead(index) {
     myLibrary[index].read = !myLibrary[index].read;
     updateDisplay();
 }
+
+console.log(myLibrary);
