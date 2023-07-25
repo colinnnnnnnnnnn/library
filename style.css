@@ -32,6 +32,15 @@ body {
     font-size: 4rem;
 }
 
+.bar button {
+    width: 4rem;
+    height: 4rem;
+    align-self: center;
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+    border-radius: 2rem;
+}
+
 .form-container {
     position: absolute;
     height: 100%;
